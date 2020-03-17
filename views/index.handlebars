@@ -1,1 +1,26 @@
 <div>UNDER CONSTRUCTION</div>
+
+<div class="row">
+    <div class="col-4">
+        <div class="list-group" id="list-tab" role="tablist">
+            {{#each workouts}}
+            <a class="list-group-item list-group-item-action" id="list-{{this._id}}-list" data-toggle="list"
+                href="#list-{{this._id}}" role="tab" aria-controls="home">{{this.name}}</a>
+            {{/each}}
+        </div>
+    </div>
+    <div class="col-8">
+        <div class="tab-content" id="nav-tabContent">
+            {{#each workouts}}
+            <div class="tab-pane fade" id="list-{{this._id}}" role="tabpanel" aria-labelledby="list-{{this._id}}-list">
+                <div class="row">
+                    {{#each this.exercises}}
+                    <div class="col-3 border">{{this.name}} ({{this.reps}})</div>
+                    {{/each}}
+                </div>
+
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
