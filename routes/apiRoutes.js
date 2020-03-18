@@ -1,8 +1,9 @@
-const underConstructionMsg = { message: "UNDER CONSTRUCTION" };
+const db = require("../models");
 
 module.exports = function(app) {
   app.get("/api/workouts", async (req, res) => {
-    res.send(underConstructionMsg);
+    let dbRoutine = await db.Workout.find({});
+    res.status(200).send(dbRoutine);
   });
 
   app.post("/api/workout", async (req, res) => {
