@@ -1,10 +1,7 @@
-<div>UNDER CONSTRUCTION</div>
-
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary m-2 border" data-toggle="modal" data-target="#staticBackdrop">
     Add New Workout
 </button>
-
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -33,7 +30,9 @@
 </div>
 
 <div class="row">
+    {{#if workouts.length}}
     <div class="col-4">
+        <div>Existing workouts</div>
         <div class="list-group" id="list-tab" role="tablist">
             {{#each workouts}}
             <a class="list-group-item list-group-item-action" id="list-{{this._id}}-list" data-toggle="list"
@@ -44,16 +43,19 @@
     <div class="col-8">
         <div class="tab-content" id="nav-tabContent">
             {{#each workouts}}
-            <div class="tab-pane fade" id="list-{{this._id}}" role="tabpanel" aria-labelledby="list-{{this._id}}-list">
+            <div class="tab-pane fade border" id="list-{{this._id}}" role="tabpanel" aria-labelledby="list-{{this._id}}-list">
+                {{#if this.exercises.length}}
+                <div>Existing exercises</div>
                 <div class="row">
                     {{#each this.exercises}}
-                    <div class="col-3 border">{{this.name}} ({{this.reps}})</div>
+                    <div class="col-3 mx-3 my-1 border">{{this.name}} ({{this.reps}})</div>
                     {{/each}}
                 </div>
+                {{/if}}
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary m-2 border" data-toggle="modal"
+                <button type="button" class="btn btn-success m-2 border" data-toggle="modal"
                     data-target="#staticBackdrop{{@index}}">
-                    Add New Workout
+                    Add New Exercise
                 </button>
                 <!-- Modal -->
                 <div class="modal fade" id="staticBackdrop{{@index}}" data-backdrop="static" tabindex="-1" role="dialog"
@@ -72,13 +74,15 @@
                                         <label for="recipient-name" class="col-form-label">Exercise Title:</label>
                                         <input type="text" class="form-control" id="excName{{this._id}}">
                                         <label for="recipient-name" class="col-form-label">Reps:</label>
-                                        <input type="number" class="form-control" id="excReps{{this._id}}" name="quantity" min="1" max="5">
+                                        <input type="number" class="form-control" id="excReps{{this._id}}"
+                                            name="quantity" min="1" max="50">
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-primary btnExcReps" data-dismiss="modal" id={{this._id}}>Add</button>
+                                <button type="button" class="btn btn-primary btnExcReps" data-dismiss="modal"
+                                    id={{this._id}}>Add</button>
                             </div>
                         </div>
                     </div>
@@ -87,6 +91,7 @@
             {{/each}}
         </div>
     </div>
+    {{/if}}
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
