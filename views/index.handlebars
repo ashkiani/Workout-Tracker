@@ -46,7 +46,7 @@
             <div class="tab-pane fade border" id="list-{{this._id}}" role="tabpanel" aria-labelledby="list-{{this._id}}-list">
                 {{#if this.exercises.length}}
                 <div>Existing exercises</div>
-                <div class="row">
+                <div class="row" id="exercises">
                     {{#each this.exercises}}
                     <div class="col-3 mx-3 my-1 border">{{this.name}} ({{this.reps}})</div>
                     {{/each}}

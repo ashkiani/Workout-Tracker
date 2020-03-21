@@ -3,11 +3,13 @@ $(document).ready(function() {
   $("#btnAdd").click(function() {
     let workoutTitle = $("#workoutTitle").val();
     console.log(workoutTitle);
-    alert("Handler for adding new workout.");
     $.ajax({
       url: "/api/workout",
       data: { name: workoutTitle },
-      method: "POST"
+      method: "POST",
+      success: () => {
+        location.reload();
+      }
     });
   });
   $(".btnExcReps").click(function() {
@@ -19,7 +21,14 @@ $(document).ready(function() {
     $.ajax({
       url: "/api/exercise",
       data: exc,
-      method: "POST"
+      method: "POST",
+      success: () => {
+        let exercisesEl = $("#exercises");
+        let newExerciseEl = $("<div>");
+        newExerciseEl.addClass("col-3 mx-3 my-1 border");
+        newExerciseEl.html(excName + " (" + excReps + ")");
+        exercisesEl.append(newExerciseEl);
+      }
     });
   });
 });
