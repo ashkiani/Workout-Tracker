@@ -9,6 +9,9 @@ $(document).ready(function() {
       method: "POST",
       success: () => {
         location.reload();
+      },
+      error: err => {
+        alert(err.responseJSON.message);
       }
     });
   });
@@ -28,6 +31,9 @@ $(document).ready(function() {
         newExerciseEl.addClass("col-3 mx-3 my-1 border");
         newExerciseEl.html(excName + " (" + excReps + ")");
         exercisesEl.append(newExerciseEl);
+      },
+      error: err => {
+        alert(err.responseJSON.message);
       }
     });
   });
