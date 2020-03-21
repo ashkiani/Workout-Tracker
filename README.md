@@ -12,8 +12,8 @@ This app that lets you to view, create and track daily workouts.
 * Users can view the existing workouts and their exercises.
 
 ## Demo
-![Workout Tracker Demo](https://drive.google.com/file/d/1KS09pSb9jVZlo9DH6Quc0x7SfZw1eEuE/view?usp=sharing)
-![Workout Error Handling Demo](https://drive.google.com/file/d/11_xMuOYFIxIq1obo7Obn8afWZ9MnOJeS/view?usp=sharing)
+![Workout Tracker Demo](https://drive.google.com/uc?export=view&id=1KS09pSb9jVZlo9DH6Quc0x7SfZw1eEuE)
+![Workout Error Handling Demo](https://drive.google.com/uc?export=view&id=11_xMuOYFIxIq1obo7Obn8afWZ9MnOJeS)
 
 ## Setup/Installation Requirements
 ​
