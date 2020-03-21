@@ -1,6 +1,6 @@
 $(document).ready(function() {
   console.log("ready!");
-  function showError(msg){
+  function showError(msg) {
     let errEl = $("#error");
     let errModalEl = $("#errorModal");
     errEl.html(msg);
