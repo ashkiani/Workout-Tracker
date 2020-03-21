@@ -21,7 +21,14 @@ $(document).ready(function() {
     $.ajax({
       url: "/api/exercise",
       data: exc,
-      method: "POST"
+      method: "POST",
+      success: () => {
+        let exercisesEl = $("#exercises");
+        let newExerciseEl = $("<div>");
+        newExerciseEl.addClass("col-3 mx-3 my-1 border");
+        newExerciseEl.html(excName + " (" + excReps + ")");
+        exercisesEl.append(newExerciseEl);
+      }
     });
   });
 });
