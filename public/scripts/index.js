@@ -3,11 +3,13 @@ $(document).ready(function() {
   $("#btnAdd").click(function() {
     let workoutTitle = $("#workoutTitle").val();
     console.log(workoutTitle);
-    alert("Handler for adding new workout.");
     $.ajax({
       url: "/api/workout",
       data: { name: workoutTitle },
-      method: "POST"
+      method: "POST",
+      success: () => {
+        location.reload();
+      }
     });
   });
   $(".btnExcReps").click(function() {
