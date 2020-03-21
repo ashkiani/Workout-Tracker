@@ -7,6 +7,13 @@ $(document).ready(function() {
     errModalEl.modal("show");
   }
 
+  function generateNewExEl(excName, excReps) {
+    let newExerciseEl = $("<div>");
+    newExerciseEl.addClass("col-3 mx-3 my-1 border");
+    newExerciseEl.html(excName + " (" + excReps + ")");
+    return newExerciseEl;
+  }
+
   $("#btnAdd").click(function() {
     let workoutTitle = $("#workoutTitle").val();
     console.log(workoutTitle);
@@ -33,11 +40,22 @@ $(document).ready(function() {
       data: exc,
       method: "POST",
       success: () => {
-        let exercisesEl = $("#exercises");
-        let newExerciseEl = $("<div>");
-        newExerciseEl.addClass("col-3 mx-3 my-1 border");
-        newExerciseEl.html(excName + " (" + excReps + ")");
-        exercisesEl.append(newExerciseEl);
+        let exercisesEl = $("#exercises" + workoutId);
+        if (exercisesEl.length) {
+          let newExerciseEl = generateNewExEl(excName, excReps);
+          exercisesEl.append(newExerciseEl);
+        } else {
+          let listEl = $("#list-" + workoutId);
+          let titleDivEl = $("<div>");
+          titleDivEl.html("Existing exercises");
+          let rowEl = $("<div>");
+          rowEl.addClass("row");
+          rowEl.attr("id", "exercises" + workoutId);
+          let newExerciseEl = generateNewExEl(excName, excReps);
+          rowEl.append(newExerciseEl);
+          listEl.prepend(rowEl);
+          listEl.prepend(titleDivEl);
+        }
       },
       error: err => {
         showError(err.responseJSON.message);

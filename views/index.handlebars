@@ -67,7 +67,7 @@
                 aria-labelledby="list-{{this._id}}-list">
                 {{#if this.exercises.length}}
                 <div>Existing exercises</div>
-                <div class="row" id="exercises">
+                <div class="row" id="exercises{{this._id}}">
                     {{#each this.exercises}}
                     <div class="col-3 mx-3 my-1 border">{{this.name}} ({{this.reps}})</div>
                     {{/each}}
