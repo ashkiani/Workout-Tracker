@@ -1,5 +1,12 @@
 $(document).ready(function() {
   console.log("ready!");
+  function showError(msg){
+    let errEl = $("#error");
+    let errModalEl = $("#errorModal");
+    errEl.html(msg);
+    errModalEl.modal("show");
+  }
+
   $("#btnAdd").click(function() {
     let workoutTitle = $("#workoutTitle").val();
     console.log(workoutTitle);
@@ -11,7 +18,7 @@ $(document).ready(function() {
         location.reload();
       },
       error: err => {
-        alert(err.responseJSON.message);
+        showError(err.responseJSON.message);
       }
     });
   });
@@ -33,7 +40,7 @@ $(document).ready(function() {
         exercisesEl.append(newExerciseEl);
       },
       error: err => {
-        alert(err.responseJSON.message);
+        showError(err.responseJSON.message);
       }
     });
   });
