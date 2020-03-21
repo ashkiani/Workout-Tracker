@@ -1,5 +1,12 @@
 $(document).ready(function() {
   console.log("ready!");
+  function showError(msg) {
+    let errEl = $("#error");
+    let errModalEl = $("#errorModal");
+    errEl.html(msg);
+    errModalEl.modal("show");
+  }
+
   $("#btnAdd").click(function() {
     let workoutTitle = $("#workoutTitle").val();
     console.log(workoutTitle);
@@ -9,6 +16,9 @@ $(document).ready(function() {
       method: "POST",
       success: () => {
         location.reload();
+      },
+      error: err => {
+        showError(err.responseJSON.message);
       }
     });
   });
@@ -28,6 +38,9 @@ $(document).ready(function() {
         newExerciseEl.addClass("col-3 mx-3 my-1 border");
         newExerciseEl.html(excName + " (" + excReps + ")");
         exercisesEl.append(newExerciseEl);
+      },
+      error: err => {
+        showError(err.responseJSON.message);
       }
     });
   });

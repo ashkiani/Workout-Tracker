@@ -29,6 +29,26 @@
     </div>
 </div>
 
+<!-- Error Modal -->
+<div class="modal fade" id="errorModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title text-danger">Error!</h1>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="error"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <div class="row">
     {{#if workouts.length}}
     <div class="col-4">
@@ -43,7 +63,8 @@
     <div class="col-8">
         <div class="tab-content" id="nav-tabContent">
             {{#each workouts}}
-            <div class="tab-pane fade border" id="list-{{this._id}}" role="tabpanel" aria-labelledby="list-{{this._id}}-list">
+            <div class="tab-pane fade border" id="list-{{this._id}}" role="tabpanel"
+                aria-labelledby="list-{{this._id}}-list">
                 {{#if this.exercises.length}}
                 <div>Existing exercises</div>
                 <div class="row" id="exercises">
@@ -94,6 +115,4 @@
     {{/if}}
 </div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="/scripts/index.js" type="text/javascript"></script>
