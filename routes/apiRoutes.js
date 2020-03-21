@@ -14,7 +14,7 @@ module.exports = function(app) {
       let dbRoutine = await db.Workout.create(newWorkout);
       res.status(200).send(dbRoutine);
     } catch (err) {
-      res.status(400).send(err._message);
+      res.status(400).send(err);
       console.log(err._message);
     }
   });
